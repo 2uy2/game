@@ -15,7 +15,7 @@ describe('game logic', () => {
     const points = createPoints(10, BRAINROT_CHARACTERS, () => 0);
     expect(points).toHaveLength(10);
     expect(points.map((point) => point.label)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-    expect(points[0]).toMatchObject({ x: 14, y: 18, state: 'visible' });
+    expect(points[0]).toMatchObject({ x: 38, y: 18, state: 'visible' });
     expect(points[0].name).toBe('Bombardiro Crocodilo');
     expect(typeof points[0].image).toBe('string');
   });

@@ -37,8 +37,8 @@ export const BRAINROT_CHARACTERS = [
   { id: 'trippi-troppi', name: 'Trippi Troppi', image: trippiTroppiImage },
 ];
 
-export function shuffleCharacters(characters = BRAINROT_CHARACTERS, random = Math.random) {
-  const shuffled = [...characters];
+function shuffleItems(items, random = Math.random) {
+  const shuffled = [...items];
 
   for (let index = shuffled.length - 1; index > 0; index -= 1) {
     const swapIndex = Math.floor(random() * (index + 1));
@@ -48,11 +48,16 @@ export function shuffleCharacters(characters = BRAINROT_CHARACTERS, random = Mat
   return shuffled;
 }
 
+export function shuffleCharacters(characters = BRAINROT_CHARACTERS, random = Math.random) {
+  return shuffleItems(characters, random);
+}
+
 export function createPoints(count, characters = BRAINROT_CHARACTERS, random = Math.random) {
   const selectedCharacters = shuffleCharacters(characters, random).slice(0, count);
+  const answerPositions = shuffleItems(PRESET_POSITIONS, random).slice(0, count);
 
   return selectedCharacters.map((character, index) => {
-    const preset = PRESET_POSITIONS[index];
+    const preset = answerPositions[index];
     const generated = {
       x: 14 + ((index * 37) % 72),
       y: 18 + ((index * 53) % 64),
