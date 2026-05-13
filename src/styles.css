@@ -1,0 +1,145 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: #111;
+  background: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 28px;
+}
+
+.game-panel {
+  width: min(100%, 470px);
+  min-height: 560px;
+  border: 1px solid #777;
+  padding: 16px 17px 18px;
+  background: #fff;
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: 15px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.success {
+  color: #d53b2c;
+}
+
+.danger {
+  color: #d53b2c;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 96px 126px;
+  align-items: center;
+  gap: 7px 10px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.controls input {
+  width: 126px;
+  height: 18px;
+  border: 1px solid #aaa;
+  padding: 1px 5px;
+  font-size: 12px;
+}
+
+.controls output {
+  min-width: 60px;
+}
+
+.controls button {
+  grid-column: 1 / 2;
+  width: 82px;
+  height: 21px;
+  padding: 0;
+  border: 1px solid #999;
+  background: #eee;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.controls button:active {
+  background: #ddd;
+}
+
+.play-area {
+  position: relative;
+  width: 100%;
+  height: 415px;
+  border: 2px solid #999;
+  overflow: hidden;
+  background: #fff;
+}
+
+.point {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  transform: translate(-50%, -50%);
+  border: 2px solid #9a9a9a;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  color: #222;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  transition:
+    opacity 900ms ease,
+    transform 900ms ease,
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+.point:hover:not(:disabled) {
+  border-color: #555;
+  background: #f7f7f7;
+}
+
+.point-clearing {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.3);
+  pointer-events: none;
+}
+
+.point:disabled {
+  cursor: default;
+}
+
+@media (max-width: 520px) {
+  .app-shell {
+    padding: 12px;
+  }
+
+  .game-panel {
+    min-height: calc(100vh - 24px);
+    padding: 14px 12px;
+  }
+
+  .controls {
+    grid-template-columns: 70px 1fr;
+  }
+
+  .play-area {
+    height: min(72vh, 415px);
+  }
+}
