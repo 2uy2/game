@@ -46,7 +46,7 @@ h1 {
 
 .controls {
   display: grid;
-  grid-template-columns: 96px 126px;
+  grid-template-columns: 104px 126px;
   align-items: center;
   gap: 7px 10px;
   margin-bottom: 8px;
@@ -80,6 +80,21 @@ h1 {
   background: #ddd;
 }
 
+.prompt {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  gap: 8px;
+  min-height: 28px;
+  margin: 8px 0 10px;
+  font-size: 13px;
+}
+
+.prompt strong {
+  font-size: 16px;
+  line-height: 1.2;
+}
+
 .play-area {
   position: relative;
   width: 100%;
@@ -91,23 +106,34 @@ h1 {
 
 .point {
   position: absolute;
-  width: 35px;
-  height: 35px;
+  width: 86px;
+  height: 86px;
   transform: translate(-50%, -50%);
-  border: 2px solid #9a9a9a;
-  border-radius: 50%;
+  border: 1px solid #9a9a9a;
+  border-radius: 8px;
   display: grid;
   place-items: center;
+  padding: 6px;
   background: #fff;
   color: #222;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
   transition:
     opacity 900ms ease,
     transform 900ms ease,
     background-color 200ms ease,
     color 200ms ease;
+}
+
+.point img {
+  width: 100%;
+  height: 100%;
+  border-radius: 7px;
+  object-fit: cover;
+  user-select: none;
 }
 
 .point:hover:not(:disabled) {
@@ -136,7 +162,7 @@ h1 {
   }
 
   .controls {
-    grid-template-columns: 70px 1fr;
+    grid-template-columns: 82px 1fr;
   }
 
   .play-area {

@@ -73,17 +73,18 @@ export default function App() {
 
   const isComplete = status === 'ALL CLEARED';
   const isGameOver = status === 'GAME OVER';
+  const targetCharacter = points.find((point) => point.label === nextNumber);
 
   return (
     <main className="app-shell">
-      <section className="game-panel" aria-label="HAIBAZO React Entrance Test game">
+      <section className="game-panel" aria-label="Brainrot character memory game">
         <h1 className={isComplete ? 'success' : isGameOver ? 'danger' : ''}>{status}</h1>
 
         <div className="controls">
-          <label htmlFor="point-count">Points:</label>
+          <label htmlFor="point-count">Characters:</label>
           <input
             id="point-count"
-            aria-label="Points"
+            aria-label="Characters"
             value={pointInput}
             inputMode="numeric"
             onChange={(event) => setPointInput(event.target.value.replace(/[^\d]/g, ''))}
@@ -100,6 +101,11 @@ export default function App() {
           </button>
         </div>
 
+        <div className="prompt" aria-live="polite">
+          <span>Pick:</span>
+          <strong>{targetCharacter ? targetCharacter.name : isComplete ? 'Completed' : 'Restart to play'}</strong>
+        </div>
+
         <div className="play-area" data-testid="play-area">
           {points.map((point) => (
             <button
@@ -108,10 +114,10 @@ export default function App() {
               className={`point point-${point.state}`}
               style={{ left: `${point.x}%`, top: `${point.y}%` }}
               onClick={() => handlePointClick(point)}
-              aria-label={`Point ${point.label}`}
+              aria-label={point.name}
               disabled={point.state !== 'visible' || failed}
             >
-              {point.label}
+              <img src={point.image} alt="" draggable="false" />
             </button>
           ))}
         </div>
